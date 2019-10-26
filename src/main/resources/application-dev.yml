@@ -1,0 +1,18 @@
+Server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://154.8.167.20:3306/db_school?characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2b8
+    username: wang1107
+    password: 21020
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  jackson:
+    serialization:
+      indent-output: true
