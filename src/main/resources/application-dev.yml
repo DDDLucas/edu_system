@@ -12,7 +12,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      show-sql: true
   jackson:
     serialization:
       indent-output: true

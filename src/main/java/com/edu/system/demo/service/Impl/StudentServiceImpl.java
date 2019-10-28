@@ -26,12 +26,13 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public String addStudent(StudentDTO studentDTO) {
         Student stu =new Student();
+        stu.setId(studentDTO.getId());
         stu.setName(studentDTO.getName());
         stu.setPassword(studentDTO.getPassword());
         stu.setSpeciality(studentDTO.getSpeciality());
         stu.setInstitute(studentDTO.getInstitute());
         studentRepository.save(stu);
-        return "添加成功";
+        return "添加学生成功";
     }
 
     @Override
