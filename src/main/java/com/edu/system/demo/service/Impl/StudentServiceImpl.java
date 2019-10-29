@@ -1,6 +1,7 @@
 package com.edu.system.demo.service.Impl;
 
 import com.edu.system.demo.dto.StudentDTO;
+import com.edu.system.demo.entity.Administer;
 import com.edu.system.demo.entity.Student;
 import com.edu.system.demo.repository.StudentRepository;
 import com.edu.system.demo.service.StudentService;
@@ -63,5 +64,19 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void searchStudent() {
 
+    }
+
+    @Override
+    public String studentSignIn(int id, String password) {
+        try {
+            Student student = studentRepository.getOne(id);
+            if(!student.getPassword().equals(password)){
+                return "密码错误";
+            }else {
+                return "登陆成功";
+            }
+        }catch (Exception e){
+            return "账号不存在";
+        }
     }
 }

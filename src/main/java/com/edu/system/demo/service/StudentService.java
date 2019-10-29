@@ -19,4 +19,5 @@ public interface StudentService {
     public String deleteStudent(int stu_id);
     public void searchStudent();
 
+    public String studentSignIn(int id, String password);
 }
