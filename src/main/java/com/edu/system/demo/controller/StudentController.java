@@ -1,7 +1,7 @@
 package com.edu.system.demo.controller;
 
+import com.edu.system.demo.dto.CourseDTO;
 import com.edu.system.demo.dto.SelectedCourseDTO;
-import com.edu.system.demo.entity.Course;
 import com.edu.system.demo.service.Impl.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -28,7 +28,7 @@ public class StudentController {
     private SCServiceImpl scServiceImpl;
 
     @ApiOperation(value = "学生登陆")
-    @PostMapping("/studentSignIn")
+    @GetMapping("/studentSignIn")
     public String studentSignIn(int id, String password){ return studentServiceImpl.studentSignIn(id, password); }
 
     @ApiOperation(value = "添加课程")
@@ -36,10 +36,16 @@ public class StudentController {
     public String selectCourse(@RequestBody SelectedCourseDTO selectedCourseDTO){ return scServiceImpl.selectCourse(selectedCourseDTO); }
 
     @ApiOperation(value = "获得已添加课程")
-    @PostMapping("/getSelectedCourse")
-    public List<Course> getSelectedCourse(int stu_id){ return scServiceImpl.getSelectedCourse(stu_id); }
+    @GetMapping("/getSelectedCourse")
+    public List<CourseDTO> getSelectedCourse(int stu_id){ return scServiceImpl.getSelectedCourse(stu_id); }
 
+    @ApiOperation(value = "删除已添加课程")
+    @DeleteMapping("/deleteSelectedCourse")
+    public String deleteSelectedCourse(int sc_id){ return scServiceImpl.deleteSelectedCourse(sc_id); }
 
+    @ApiOperation(value = "查看课程成绩")
+    @GetMapping("/getGrade")
+    public List<SelectedCourseDTO> getGrade(int stu_id){ return scServiceImpl.getGrade(stu_id); }
 
 
 }

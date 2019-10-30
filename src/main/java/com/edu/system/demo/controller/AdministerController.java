@@ -41,15 +41,13 @@ public class AdministerController {
     private AdminServiceImpl adminServiceImpl;
 
     @ApiOperation(value = "管理员登陆")
-    @PostMapping("/adminSignIn")
+    @GetMapping("/adminSignIn")
     public String adminSignIn(String usr_name, String password){ return adminServiceImpl.adminSignIn(usr_name, password); }
 
 
     @ApiOperation(value = "添加学生")
     @PostMapping("/addStudent")
     public String addStudent(@RequestBody StudentDTO stu){
-        System.out.println("传入数据： "+stu.toString());
-        System.out.println("传入数据name： "+stu.getName());
         return studentServiceImpl.addStudent(stu); }
 
     @ApiOperation(value = "获取所有学生列表")

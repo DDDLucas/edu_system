@@ -15,6 +15,7 @@ public class SelectedCourseDTO {
     private int course_id;
     private int stu_id;
     private float score;
+    private String course_name;
 
 
 }
