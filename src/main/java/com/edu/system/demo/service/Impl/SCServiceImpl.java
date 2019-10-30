@@ -72,6 +72,7 @@ public class SCServiceImpl implements SCService {
             course.setClass_time((String) obj[7]);
             course.setClassroom((String) obj[8]);
             course.setCredit((Integer) obj[9]);
+            course.setSc_id((Integer) obj[10]);
             courseList.add(course);
         }
         return courseList;

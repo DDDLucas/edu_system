@@ -3,8 +3,10 @@ package com.edu.system.demo.service.Impl;
 import com.edu.system.demo.dto.CourseDTO;
 import com.edu.system.demo.dto.StudentDTO;
 import com.edu.system.demo.entity.Course;
+import com.edu.system.demo.entity.SelectedCourse;
 import com.edu.system.demo.entity.Student;
 import com.edu.system.demo.repository.CourseRepository;
+import com.edu.system.demo.repository.SCRepository;
 import com.edu.system.demo.repository.StudentRepository;
 import com.edu.system.demo.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,8 @@ public class CourseServiceImpl implements CourseService {
     @Autowired
     private CourseRepository courseRepository;
 
-
+    @Autowired
+    private SCRepository scRepository;
     @Override
     public String addCourse(CourseDTO courseDTO) {
         Course course = new Course();
@@ -67,6 +70,8 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public String deleteCourse(int cou_id) {
         Course course = courseRepository.getOne(cou_id);
+        List<SelectedCourse> scList = scRepository.findGradebyCourse(cou_id);
+        scRepository.deleteAll(scList);
         courseRepository.delete(course);
         return "删除成功";
     }

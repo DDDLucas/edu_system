@@ -25,7 +25,7 @@ import java.util.List;
  * @create 2019-10-30 16:49
  */
 @RestController
-@Api(value="TeacherController", tags = "教师模块API")
+@Api(value="TeacherController", tags = "教师模块接口")
 public class TeacherController {
 
     @Resource

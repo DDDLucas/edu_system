@@ -23,4 +23,6 @@ public class CourseDTO {
     private String class_time;
     private String classroom;
     private int credit;
+
+    private int sc_id;
 }
