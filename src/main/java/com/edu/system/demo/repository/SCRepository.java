@@ -1,5 +1,6 @@
 package com.edu.system.demo.repository;
 
+import com.edu.system.demo.dto.SelectedCourseDTO;
 import com.edu.system.demo.entity.Course;
 import com.edu.system.demo.entity.SelectedCourse;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,4 +24,8 @@ public interface SCRepository extends JpaRepository<SelectedCourse, Integer> {
 
     @Query(value="SELECT sc.id,course.name,sc.score FROM selected_course sc, course WHERE sc.course_id = course.id AND stu_id =:stu_id",nativeQuery = true)
     public List<Object> findGradeById(int stu_id);
+
+
+    @Query(value="select * from selected_course where course_id=:cou_id",nativeQuery = true)
+    public List<SelectedCourse> findGradebyCourse(int cou_id);
 }

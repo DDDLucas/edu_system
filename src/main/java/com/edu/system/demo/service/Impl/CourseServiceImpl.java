@@ -75,4 +75,10 @@ public class CourseServiceImpl implements CourseService {
     public void searchCourse() {
 
     }
+
+    @Override
+    public List<Course> getTCourses(int tea_id) {
+        List<Course> courseList = courseRepository.getCoursesByTeacher_id(tea_id);
+        return courseList;
+    }
 }

@@ -92,5 +92,19 @@ public class SCServiceImpl implements SCService {
         return scList;
     }
 
+    @Override
+    public List<SelectedCourse> getCourseStudent(int cou_id) {
+        List<SelectedCourse> selectedCourseList = scRepository.findGradebyCourse(cou_id);
+        return selectedCourseList;
+    }
+
+    @Override
+    public String updateScore(int sc_id, float score) {
+        SelectedCourse sc = scRepository.getOne(sc_id);
+        sc.setScore(score);
+        scRepository.save(sc);
+        return "修改成功";
+    }
+
 
 }

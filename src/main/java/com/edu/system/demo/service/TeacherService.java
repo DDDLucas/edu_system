@@ -18,5 +18,5 @@ public interface TeacherService {
     public String updateTeacher(TeacherDTO teachertDTO);
     public String deleteTeacher(int tea_id);
     public void searchTeacher();
-
+    public String teacherSignIn(int tea_id, String password);
 }

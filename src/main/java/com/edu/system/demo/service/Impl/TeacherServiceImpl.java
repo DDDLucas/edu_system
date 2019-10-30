@@ -64,4 +64,19 @@ public class TeacherServiceImpl implements TeacherService {
 
     }
 
+    @Override
+    public String teacherSignIn(int tea_id, String password) {
+        try {
+            Teacher teacher = teacherRepository.getOne(tea_id);
+            if(!teacher.getPassword().equals(password)){
+                return "密码错误";
+            }else {
+                return "登陆成功";
+            }
+        }catch (Exception e){
+            return "账号不存在";
+        }
+
+    }
+
 }

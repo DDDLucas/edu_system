@@ -18,5 +18,5 @@ public interface CourseService {
     public String updateCourse(CourseDTO courseDTO);
     public String deleteCourse(int cou_id);
     public void searchCourse();
-
+    public List<Course> getTCourses(int tea_id);
 }
