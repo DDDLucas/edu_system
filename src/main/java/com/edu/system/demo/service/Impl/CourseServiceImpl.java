@@ -41,6 +41,7 @@ public class CourseServiceImpl implements CourseService {
         course.setClass_time(courseDTO.getClass_time());
         course.setClassroom(courseDTO.getClassroom());
         course.setCredit(courseDTO.getCredit());
+        course.setMax_num(courseDTO.getMax_num());
         courseRepository.save(course);
         return "课程添加成功";
     }
@@ -63,6 +64,7 @@ public class CourseServiceImpl implements CourseService {
         course.setClass_time(courseDTO.getClass_time());
         course.setClassroom(courseDTO.getClassroom());
         course.setCredit(courseDTO.getCredit());
+        course.setMax_num(courseDTO.getMax_num());
         courseRepository.save(course);
         return "课程修改成功";
     }

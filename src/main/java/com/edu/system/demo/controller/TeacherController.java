@@ -49,8 +49,8 @@ public class TeacherController {
     @GetMapping("/getCourseStudent")
     public List<SelectedCourse> getCourseStudent(int cou_id){ return scServiceImpl.getCourseStudent(cou_id);}
 
-    @ApiOperation(value = "查看课程下学生")
-    @PutMapping("/updateScore")
+    @ApiOperation(value = "更新学生成绩")
+    @GetMapping("/updateScore")
     public String updateScore(int sc_id,float score){ return scServiceImpl.updateScore(sc_id,score);}
 
 

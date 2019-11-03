@@ -52,6 +52,9 @@ public class Course {
 //    @ApiModelProperty(value = "学分")
     private int credit;
 
+//    @ApiModelProperty(value = "最大人数")
+    private int max_num;
+
     public int getId() {
         return id;
     }
@@ -132,6 +135,13 @@ public class Course {
         this.credit = credit;
     }
 
+    public int getMax_num() {
+        return max_num;
+    }
+
+    public void setMax_num(int max_num) {
+        this.max_num = max_num;
+    }
 
     @Override
     public String toString() {

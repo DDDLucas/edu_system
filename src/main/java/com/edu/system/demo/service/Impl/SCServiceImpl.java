@@ -34,15 +34,22 @@ public class SCServiceImpl implements SCService {
 
     @Override
     public String selectCourse(SelectedCourseDTO selectedCourseDTO) {
-        SelectedCourse sc = new SelectedCourse();
-        sc.setId(selectedCourseDTO.getId());
-        sc.setCourse_id(selectedCourseDTO.getCourse_id());
-        sc.setStu_id(selectedCourseDTO.getStu_id());
-        scRepository.save(sc);
         Course course = courseRepository.getOne(selectedCourseDTO.getCourse_id());
-        course.setStu_num(course.getStu_num()+1);
-        courseRepository.save(course);
-        return "添课成功";
+        if(course.getStu_num() < course.getMax_num()){
+            course.setStu_num(course.getStu_num()+1);
+            courseRepository.save(course);
+            SelectedCourse sc = new SelectedCourse();
+            sc.setId(selectedCourseDTO.getId());
+            sc.setCourse_id(selectedCourseDTO.getCourse_id());
+            sc.setStu_id(selectedCourseDTO.getStu_id());
+            scRepository.save(sc);
+
+            return "添课成功";
+        }else{
+            return "添课失败：选课人数已满";
+        }
+
+
     }
 
     @Override
@@ -72,7 +79,8 @@ public class SCServiceImpl implements SCService {
             course.setClass_time((String) obj[7]);
             course.setClassroom((String) obj[8]);
             course.setCredit((Integer) obj[9]);
-            course.setSc_id((Integer) obj[10]);
+            course.setMax_num((Integer) obj[10]);
+            course.setSc_id((Integer) obj[11]);
             courseList.add(course);
         }
         return courseList;
