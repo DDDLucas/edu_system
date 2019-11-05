@@ -32,7 +32,7 @@ public class Student {
 
     @Column(length = 80)
 //    @ApiModelProperty(value = "专业")
-    private String speciality;
+    private String specialty;
 
     @Column(length = 80)
 //    @ApiModelProperty(value = "学院")
@@ -62,12 +62,12 @@ public class Student {
         this.password = password;
     }
 
-    public String getSpeciality() {
-        return speciality;
+    public String getSpecialty() {
+        return specialty;
     }
 
-    public void setSpeciality(String speciality) {
-        this.speciality = speciality;
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
     }
 
     public String getInstitute() {
@@ -84,7 +84,7 @@ public class Student {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
-                ", speciality='" + speciality + '\'' +
+                ", specialty='" + specialty + '\'' +
                 ", institute='" + institute + '\'' +
                 '}';
     }

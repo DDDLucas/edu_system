@@ -18,10 +18,9 @@ public class CourseDTO {
     private int teacher_id;
     private int stu_num;
     private String type;
-    private String speciality;
+    private String specialty;
     private String institute;
-    private String class_time;
-    private String classroom;
+    private String class_id;
     private int credit;
     private int max_num;
     private int sc_id;

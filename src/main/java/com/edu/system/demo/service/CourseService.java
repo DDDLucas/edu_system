@@ -2,6 +2,7 @@ package com.edu.system.demo.service;
 
 import com.edu.system.demo.dto.CourseDTO;
 import com.edu.system.demo.entity.Course;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface CourseService {
     public String deleteCourse(int cou_id);
     public void searchCourse();
     public List<Course> getTCourses(int tea_id);
+
+    public Page<Course> getCoursePage(Integer pageNum, Integer pageSize, String specialty);
 }

@@ -35,19 +35,15 @@ public class Course {
 
     @Column(length = 80)
 //    @ApiModelProperty(value = "专业")
-    private String speciality;
+    private String specialty;
 
     @Column(length = 80)
 //    @ApiModelProperty(value = "学院")
     private String institute;
 
     @Column(length = 80)
-//    @ApiModelProperty(value = "开课时间")
-    private String class_time;
-
-    @Column(length = 80)
-//    @ApiModelProperty(value = "上课教室")
-    private String classroom;
+//    @ApiModelProperty(value = "上课教室id")
+    private String class_id;
 
 //    @ApiModelProperty(value = "学分")
     private int credit;
@@ -95,12 +91,12 @@ public class Course {
         this.type = type;
     }
 
-    public String getSpeciality() {
-        return speciality;
+    public String getSpecialty() {
+        return specialty;
     }
 
-    public void setSpeciality(String speciality) {
-        this.speciality = speciality;
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
     }
 
     public String getInstitute() {
@@ -111,20 +107,12 @@ public class Course {
         this.institute = institute;
     }
 
-    public String getClass_time() {
-        return class_time;
+    public String getClass_id() {
+        return class_id;
     }
 
-    public void setClass_time(String class_time) {
-        this.class_time = class_time;
-    }
-
-    public String getClassroom() {
-        return classroom;
-    }
-
-    public void setClassroom(String classroom) {
-        this.classroom = classroom;
+    public void setClass_id(String class_id) {
+        this.class_id = class_id;
     }
 
     public int getCredit() {
@@ -151,11 +139,11 @@ public class Course {
                 ", teacher_id=" + teacher_id +
                 ", stu_num=" + stu_num +
                 ", type='" + type + '\'' +
-                ", speciality='" + speciality + '\'' +
+                ", specialty='" + specialty + '\'' +
                 ", institute='" + institute + '\'' +
-                ", class_time='" + class_time + '\'' +
-                ", classroom='" + classroom + '\'' +
+                ", class_id='" + class_id + '\'' +
                 ", credit=" + credit +
+                ", max_num=" + max_num +
                 '}';
     }
 }

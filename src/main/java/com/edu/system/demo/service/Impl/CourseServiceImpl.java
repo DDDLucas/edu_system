@@ -10,6 +10,10 @@ import com.edu.system.demo.repository.SCRepository;
 import com.edu.system.demo.repository.StudentRepository;
 import com.edu.system.demo.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,10 +40,9 @@ public class CourseServiceImpl implements CourseService {
         course.setTeacher_id(courseDTO.getTeacher_id());
         course.setStu_num(courseDTO.getStu_num());
         course.setType(courseDTO.getType());
-        course.setSpeciality(courseDTO.getSpeciality());
+        course.setSpecialty(courseDTO.getSpecialty());
         course.setInstitute(courseDTO.getInstitute());
-        course.setClass_time(courseDTO.getClass_time());
-        course.setClassroom(courseDTO.getClassroom());
+        course.setClass_id(courseDTO.getClass_id());
         course.setCredit(courseDTO.getCredit());
         course.setMax_num(courseDTO.getMax_num());
         courseRepository.save(course);
@@ -59,10 +62,9 @@ public class CourseServiceImpl implements CourseService {
         course.setTeacher_id(courseDTO.getTeacher_id());
         course.setStu_num(courseDTO.getStu_num());
         course.setType(courseDTO.getType());
-        course.setSpeciality(courseDTO.getSpeciality());
+        course.setSpecialty(courseDTO.getSpecialty());
         course.setInstitute(courseDTO.getInstitute());
-        course.setClass_time(courseDTO.getClass_time());
-        course.setClassroom(courseDTO.getClassroom());
+        course.setClass_id(courseDTO.getClass_id());
         course.setCredit(courseDTO.getCredit());
         course.setMax_num(courseDTO.getMax_num());
         courseRepository.save(course);
@@ -87,5 +89,24 @@ public class CourseServiceImpl implements CourseService {
     public List<Course> getTCourses(int tea_id) {
         List<Course> courseList = courseRepository.getCoursesByTeacher_id(tea_id);
         return courseList;
+    }
+
+    @Override
+    public Page<Course> getCoursePage(Integer pageNum, Integer pageSize, String specialty) {
+        List<Course> courseList;
+        if(specialty == null){
+            courseList = courseRepository.findAll();
+        }else{
+            courseList =courseRepository.sortCoursebySpecialty(specialty);
+        }
+
+        Pageable pageable = PageRequest.of(pageNum, pageSize);
+        int totalElements =courseList.size();
+        int fromIndex = pageable.getPageSize()*pageable.getPageNumber();
+        int toIndex = pageable.getPageSize()*(pageable.getPageNumber()+1);
+        if(toIndex>totalElements) toIndex = totalElements;
+        List<Course> indexObjects = courseList.subList(fromIndex,toIndex);
+        Page<Course> coursePage=new PageImpl<>(indexObjects, pageable ,totalElements);
+        return coursePage;
     }
 }

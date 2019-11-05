@@ -30,7 +30,7 @@ public class StudentServiceImpl implements StudentService {
         stu.setId(studentDTO.getId());
         stu.setName(studentDTO.getName());
         stu.setPassword(studentDTO.getPassword());
-        stu.setSpeciality(studentDTO.getSpeciality());
+        stu.setSpecialty(studentDTO.getSpecialty());
         stu.setInstitute(studentDTO.getInstitute());
         studentRepository.save(stu);
         return "添加学生成功";
@@ -48,7 +48,7 @@ public class StudentServiceImpl implements StudentService {
         Student stu = studentRepository.getOne(studentDTO.getId());
         stu.setName(studentDTO.getName());
         stu.setPassword(studentDTO.getPassword());
-        stu.setSpeciality(studentDTO.getSpeciality());
+        stu.setSpecialty(studentDTO.getSpecialty());
         stu.setInstitute(studentDTO.getInstitute());
         studentRepository.save(stu);
         return "修改成功";

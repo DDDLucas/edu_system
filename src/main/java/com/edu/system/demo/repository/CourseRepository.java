@@ -18,5 +18,10 @@ import java.util.List;
 public interface CourseRepository extends JpaRepository<Course, Integer> {
 
     @Query(value="select * from course where teacher_id=:tea_id ",nativeQuery = true)
-    public List<Course> getCoursesByTeacher_id(int tea_id);
+    List<Course> getCoursesByTeacher_id(int tea_id);
+
+    @Query(value="SELECT * FROM course ORDER BY \n" +
+            "CASE WHEN specialty =:specialty THEN 0 ELSE 1 END ,\n" +
+            "specialty ASC ",nativeQuery = true)
+    List<Course> sortCoursebySpecialty(String specialty);
 }

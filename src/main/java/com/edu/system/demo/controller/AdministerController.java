@@ -1,17 +1,18 @@
 package com.edu.system.demo.controller;
 
+import com.edu.system.demo.dto.ClassroomDTO;
 import com.edu.system.demo.dto.CourseDTO;
 import com.edu.system.demo.dto.StudentDTO;
 import com.edu.system.demo.dto.TeacherDTO;
+import com.edu.system.demo.entity.Classroom;
 import com.edu.system.demo.entity.Course;
 import com.edu.system.demo.entity.Student;
 import com.edu.system.demo.entity.Teacher;
-import com.edu.system.demo.service.Impl.AdminServiceImpl;
-import com.edu.system.demo.service.Impl.CourseServiceImpl;
-import com.edu.system.demo.service.Impl.StudentServiceImpl;
-import com.edu.system.demo.service.Impl.TeacherServiceImpl;
+import com.edu.system.demo.repository.ClassroomRepository;
+import com.edu.system.demo.service.Impl.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -39,6 +40,9 @@ public class AdministerController {
 
     @Resource
     private AdminServiceImpl adminServiceImpl;
+
+    @Resource
+    private ClassroomServiceImpl classroomServiceImpl;
 
     @ApiOperation(value = "管理员登陆")
     @GetMapping("/adminSignIn")
@@ -88,6 +92,11 @@ public class AdministerController {
     @GetMapping("/getCourse")
     public List<Course> getCourse(){ return courseServiceImpl.getCourse(); }
 
+    @ApiOperation(value = "获取所有课程列表分页")
+    @GetMapping("/getCoursePage")
+    public Page<Course> getCoursePage(Integer pageNum, Integer pageSize, String specialty){ return courseServiceImpl.getCoursePage(pageNum, pageSize, specialty); }
+
+
     @ApiOperation(value = "更新课程信息")
     @PutMapping("/updateCourse")
     public String updateCourse(@RequestBody CourseDTO cou){ return courseServiceImpl.updateCourse(cou); }
@@ -97,5 +106,25 @@ public class AdministerController {
     public String deleteCourse(int cou_id){ return courseServiceImpl.deleteCourse(cou_id); }
 
 
+    @ApiOperation(value = "添加教室")
+    @GetMapping("/addClassroom")
+    public String addClassroom(String classroomCode){ return classroomServiceImpl.addClassroom(classroomCode); }
+
+
+    @ApiOperation(value = "获取所有教室列表")
+    @GetMapping("/getClassroom")
+    public List<Classroom> getClassroom(){ return classroomServiceImpl.getClassroom(); }
+
+    @ApiOperation(value = "获取所有教室列表分页")
+    @GetMapping("/getClassroomPage")
+    public Page<Classroom> getClassroomPage(Integer pageNum, Integer pageSize){ return classroomServiceImpl.getClassroomPage(pageNum, pageSize); }
+
+    @ApiOperation(value = "更新教室信息")
+    @PutMapping("/updateClassroom")
+    public String updateClassroom(@RequestBody ClassroomDTO classroomDTO){ return classroomServiceImpl.updateClassroom(classroomDTO); }
+
+    @ApiOperation(value = "删除教室")
+    @DeleteMapping("/deleteClassroom")
+    public String deleteClassroom(int class_id){ return classroomServiceImpl.deleteClassroom(class_id); }
 
 }

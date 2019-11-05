@@ -14,7 +14,7 @@ public class StudentDTO {
     private int id;
     private String name;
     private String password;
-    private String speciality;
+    private String specialty;
     private String institute;
 
 
