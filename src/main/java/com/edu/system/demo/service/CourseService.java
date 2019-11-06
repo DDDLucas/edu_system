@@ -14,12 +14,14 @@ import java.util.List;
  */
 public interface CourseService {
 
-    public String addCourse(CourseDTO courseDTO);
-    public List<Course> getCourse();
-    public String updateCourse(CourseDTO courseDTO);
-    public String deleteCourse(int cou_id);
-    public void searchCourse();
-    public List<Course> getTCourses(int tea_id);
+    String addCourse(CourseDTO courseDTO);
+    List<Course> getCourse();
+    String updateCourse(CourseDTO courseDTO);
+    String deleteCourse(int cou_id);
+    void searchCourse();
+    List<Course> getTCourses(int tea_id);
 
-    public Page<Course> getCoursePage(Integer pageNum, Integer pageSize, String specialty);
+    Page<Course> getCoursePage(Integer pageNum, Integer pageSize, String specialty);
+
+    String emptyCourseClassroom();
 }

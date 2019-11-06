@@ -109,4 +109,14 @@ public class CourseServiceImpl implements CourseService {
         Page<Course> coursePage=new PageImpl<>(indexObjects, pageable ,totalElements);
         return coursePage;
     }
+
+    @Override
+    public String emptyCourseClassroom() {
+        List<Course> courseList = courseRepository.findAll();
+        for(Course c: courseList){
+            c.setClass_id(null);
+            courseRepository.save(c);
+        }
+        return "成功清空课程绑定的教室";
+    }
 }

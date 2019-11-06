@@ -105,6 +105,11 @@ public class AdministerController {
     @DeleteMapping("/deleteCourse")
     public String deleteCourse(int cou_id){ return courseServiceImpl.deleteCourse(cou_id); }
 
+    @ApiOperation(value = "清空课程绑定的教室")
+    @GetMapping("/emptyCourseClassroom")
+    public String emptyCourseClassroom(){ return courseServiceImpl.emptyCourseClassroom(); }
+
+
 
     @ApiOperation(value = "添加教室")
     @GetMapping("/addClassroom")
@@ -126,5 +131,9 @@ public class AdministerController {
     @ApiOperation(value = "删除教室")
     @DeleteMapping("/deleteClassroom")
     public String deleteClassroom(int class_id){ return classroomServiceImpl.deleteClassroom(class_id); }
+
+    @ApiOperation(value = "清空教室")
+    @GetMapping("/emptyClassroom")
+    public String emptyClassroom(){ return classroomServiceImpl.emptyClassroom(); }
 
 }
