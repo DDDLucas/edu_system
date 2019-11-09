@@ -24,4 +24,6 @@ public interface CourseService {
     Page<Course> getCoursePage(Integer pageNum, Integer pageSize, String specialty);
 
     String emptyCourseClassroom();
+
+    String distributecourse();
 }

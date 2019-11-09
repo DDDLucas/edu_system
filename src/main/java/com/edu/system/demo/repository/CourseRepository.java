@@ -1,6 +1,5 @@
 package com.edu.system.demo.repository;
 
-import com.edu.system.demo.dto.CourseDTO;
 import com.edu.system.demo.entity.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -24,4 +23,7 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
             "CASE WHEN specialty =:specialty THEN 0 ELSE 1 END ,\n" +
             "specialty ASC ",nativeQuery = true)
     List<Course> sortCoursebySpecialty(String specialty);
+
+    @Query(value = "SELECT * FROM course ORDER BY specialty,TYPE,credit DESC",nativeQuery = true)
+    List<Course> sortCoursebySp_ty_cr();
 }

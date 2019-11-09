@@ -136,4 +136,8 @@ public class AdministerController {
     @GetMapping("/emptyClassroom")
     public String emptyClassroom(){ return classroomServiceImpl.emptyClassroom(); }
 
+    @ApiOperation(value = "排课")
+    @GetMapping("/distributecourse")
+    public String distributecourse(){ return courseServiceImpl.distributecourse(); }
+
 }
