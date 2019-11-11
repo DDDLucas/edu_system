@@ -1,7 +1,5 @@
 package com.edu.system.demo.repository;
 
-import com.edu.system.demo.dto.SelectedCourseDTO;
-import com.edu.system.demo.entity.Course;
 import com.edu.system.demo.entity.SelectedCourse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

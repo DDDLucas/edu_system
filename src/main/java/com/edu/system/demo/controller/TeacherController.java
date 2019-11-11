@@ -1,18 +1,13 @@
 package com.edu.system.demo.controller;
 
-import com.edu.system.demo.dto.CourseDTO;
-import com.edu.system.demo.dto.SelectedCourseDTO;
 import com.edu.system.demo.entity.Course;
 import com.edu.system.demo.entity.SelectedCourse;
-import com.edu.system.demo.repository.CourseRepository;
-import com.edu.system.demo.repository.SCRepository;
 import com.edu.system.demo.service.Impl.CourseServiceImpl;
 import com.edu.system.demo.service.Impl.SCServiceImpl;
 import com.edu.system.demo.service.Impl.TeacherServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;

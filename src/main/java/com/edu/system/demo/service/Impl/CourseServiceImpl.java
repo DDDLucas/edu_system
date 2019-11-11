@@ -1,17 +1,13 @@
 package com.edu.system.demo.service.Impl;
 
 import com.edu.system.demo.dto.CourseDTO;
-import com.edu.system.demo.dto.StudentDTO;
 import com.edu.system.demo.entity.Classroom;
 import com.edu.system.demo.entity.Course;
 import com.edu.system.demo.entity.SelectedCourse;
-import com.edu.system.demo.entity.Student;
 import com.edu.system.demo.repository.ClassroomRepository;
 import com.edu.system.demo.repository.CourseRepository;
 import com.edu.system.demo.repository.SCRepository;
-import com.edu.system.demo.repository.StudentRepository;
 import com.edu.system.demo.service.CourseService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

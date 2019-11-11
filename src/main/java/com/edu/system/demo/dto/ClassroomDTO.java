@@ -2,7 +2,6 @@ package com.edu.system.demo.dto;
 
 import lombok.Data;
 
-import javax.persistence.Column;
 
 /**
  * @author lucas

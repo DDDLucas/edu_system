@@ -1,7 +1,6 @@
 package com.edu.system.demo.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * @author lucas

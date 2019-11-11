@@ -1,14 +1,12 @@
 package com.edu.system.demo.service.Impl;
 
 import com.edu.system.demo.dto.StudentDTO;
-import com.edu.system.demo.entity.Administer;
 import com.edu.system.demo.entity.Student;
 import com.edu.system.demo.repository.StudentRepository;
 import com.edu.system.demo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**

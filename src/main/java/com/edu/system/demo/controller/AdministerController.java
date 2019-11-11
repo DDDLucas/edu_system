@@ -8,7 +8,6 @@ import com.edu.system.demo.entity.Classroom;
 import com.edu.system.demo.entity.Course;
 import com.edu.system.demo.entity.Student;
 import com.edu.system.demo.entity.Teacher;
-import com.edu.system.demo.repository.ClassroomRepository;
 import com.edu.system.demo.service.Impl.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

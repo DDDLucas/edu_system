@@ -1,8 +1,6 @@
 package com.edu.system.demo.service.Impl;
 
-import com.edu.system.demo.dto.StudentDTO;
 import com.edu.system.demo.dto.TeacherDTO;
-import com.edu.system.demo.entity.Student;
 import com.edu.system.demo.entity.Teacher;
 import com.edu.system.demo.repository.TeacherRepository;
 import com.edu.system.demo.service.TeacherService;

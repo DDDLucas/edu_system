@@ -1,6 +1,5 @@
 package com.edu.system.demo.entity;
 
-import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 

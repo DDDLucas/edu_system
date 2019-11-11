@@ -2,13 +2,10 @@ package com.edu.system.demo.service.Impl;
 
 import com.edu.system.demo.dto.CourseDTO;
 import com.edu.system.demo.dto.SelectedCourseDTO;
-import com.edu.system.demo.entity.Administer;
 import com.edu.system.demo.entity.Course;
 import com.edu.system.demo.entity.SelectedCourse;
-import com.edu.system.demo.repository.AdminRepository;
 import com.edu.system.demo.repository.CourseRepository;
 import com.edu.system.demo.repository.SCRepository;
-import com.edu.system.demo.service.AdminService;
 import com.edu.system.demo.service.SCService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

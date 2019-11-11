@@ -1,21 +1,14 @@
 package com.edu.system.demo.service.Impl;
 
 import com.edu.system.demo.dto.ClassroomDTO;
-import com.edu.system.demo.dto.CourseDTO;
 import com.edu.system.demo.entity.Classroom;
-import com.edu.system.demo.entity.Course;
-import com.edu.system.demo.entity.SelectedCourse;
 import com.edu.system.demo.repository.ClassroomRepository;
-import com.edu.system.demo.repository.CourseRepository;
-import com.edu.system.demo.repository.SCRepository;
 import com.edu.system.demo.service.ClassroomService;
-import com.edu.system.demo.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
