@@ -15,13 +15,13 @@ import java.util.List;
 public interface CourseService {
 
     String addCourse(CourseDTO courseDTO);
-    List<Course> getCourse();
+    List<CourseDTO> getCourse();
     String updateCourse(CourseDTO courseDTO);
     String deleteCourse(int cou_id);
-    void searchCourse();
+    Page<CourseDTO> searchCourse(Integer pageNum, Integer pageSize, String course_name);
     List<Course> getTCourses(int tea_id);
 
-    Page<Course> getCoursePage(Integer pageNum, Integer pageSize, String specialty);
+    Page<CourseDTO> getCoursePage(Integer pageNum, Integer pageSize, String specialty);
 
     String emptyCourseClassroom();
 

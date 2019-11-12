@@ -26,4 +26,8 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
 
     @Query(value = "SELECT * FROM course ORDER BY specialty,TYPE,credit DESC",nativeQuery = true)
     List<Course> sortCoursebySp_ty_cr();
+
+    @Query(value="SELECT * FROM course WHERE NAME LIKE %:course_name%", nativeQuery = true)
+    List<Course> findByCourseName(String course_name);
+
 }

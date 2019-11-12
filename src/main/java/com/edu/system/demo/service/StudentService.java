@@ -17,7 +17,7 @@ public interface StudentService {
     public List<Student> getStudent();
     public String updateStudent(StudentDTO studentDTO);
     public String deleteStudent(int stu_id);
-    public void searchStudent();
+    public List<Student> searchStudent(Integer id, String name);
 
     public String studentSignIn(int id, String password);
 }

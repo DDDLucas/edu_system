@@ -13,10 +13,10 @@ import java.util.List;
  */
 public interface TeacherService {
 
-    public String addTeacher(TeacherDTO teachertDTO);
-    public List<Teacher> getTeacher();
-    public String updateTeacher(TeacherDTO teachertDTO);
-    public String deleteTeacher(int tea_id);
-    public void searchTeacher();
-    public String teacherSignIn(int tea_id, String password);
+    String addTeacher(TeacherDTO teachertDTO);
+    List<Teacher> getTeacher();
+    String updateTeacher(TeacherDTO teachertDTO);
+    String deleteTeacher(int tea_id);
+    List<Teacher> searchTeacher(Integer id, String name);
+    String teacherSignIn(int tea_id, String password);
 }

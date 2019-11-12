@@ -2,8 +2,10 @@ package com.edu.system.demo.service.Impl;
 
 import com.edu.system.demo.dto.CourseDTO;
 import com.edu.system.demo.dto.SelectedCourseDTO;
+import com.edu.system.demo.entity.Classroom;
 import com.edu.system.demo.entity.Course;
 import com.edu.system.demo.entity.SelectedCourse;
+import com.edu.system.demo.repository.ClassroomRepository;
 import com.edu.system.demo.repository.CourseRepository;
 import com.edu.system.demo.repository.SCRepository;
 import com.edu.system.demo.service.SCService;
@@ -29,6 +31,7 @@ public class SCServiceImpl implements SCService {
     @Autowired
     private CourseRepository courseRepository;
 
+    private ClassroomRepository classroomRepository;
     @Override
     public String selectCourse(SelectedCourseDTO selectedCourseDTO) {
         Course course = courseRepository.getOne(selectedCourseDTO.getCourse_id());
@@ -77,6 +80,33 @@ public class SCServiceImpl implements SCService {
             course.setCredit((Integer) obj[8]);
             course.setMax_num((Integer) obj[9]);
             course.setSc_id((Integer) obj[10]);
+            Classroom c= classroomRepository.getOne((Integer) obj[7]);
+            String class_time = null;
+            if((Integer) obj[8]==3){
+                if(c.getLesson3().equals(obj[0])){
+                    class_time = c.getWeekday()+"第3-5节";
+                }else if(c.getLesson8().equals(obj[0])){
+                    class_time = c.getWeekday()+"第8-10节";
+                }else if(c.getLesson12().equals(obj[0])){
+                    class_time = c.getWeekday()+"第12-14节";
+                }
+            }else{
+                if(c.getLesson1().equals(obj[0])){
+                    class_time = c.getWeekday()+"第1-2节";
+                }else if(c.getLesson3().equals(obj[0])){
+                    class_time = c.getWeekday()+"第3-4节";
+                }else if(c.getLesson6().equals(obj[0])){
+                    class_time = c.getWeekday()+"第6-7节";
+                }else if(c.getLesson8().equals(obj[0])){
+                    class_time = c.getWeekday()+"第8-9节";
+                }else if(c.getLesson10().equals(obj[0])){
+                    class_time = c.getWeekday()+"第10-11节";
+                }else if(c.getLesson12().equals(obj[0])){
+                    class_time = c.getWeekday()+"第12-13节";
+                }
+            }
+            course.setClass_time(class_time);
+            course.setClassroom(c.getClassroom());
             courseList.add(course);
         }
         return courseList;

@@ -57,6 +57,10 @@ public class AdministerController {
     @GetMapping("/getStudent")
     public List<Student> getStudent(){ return studentServiceImpl.getStudent(); }
 
+    @ApiOperation(value = "搜索学生通过id名字")
+    @GetMapping("/searchStudent")
+    public List<Student> searchStudent(Integer id, String name){ return studentServiceImpl.searchStudent(id, name); }
+
     @ApiOperation(value = "更新学生信息")
     @PutMapping("/updateStudent")
     public String updateStudent(@RequestBody StudentDTO stu){ return studentServiceImpl.updateStudent(stu); }
@@ -74,6 +78,10 @@ public class AdministerController {
     @GetMapping("/getTeacher")
     public List<Teacher> getTeacher(){ return teacherServiceImpl.getTeacher(); }
 
+    @ApiOperation(value = "搜索老师按id和名字")
+    @GetMapping("/searchTeacher")
+    public List<Teacher> searchTeacher(Integer id, String name){ return teacherServiceImpl.searchTeacher(id, name); }
+
     @ApiOperation(value = "更新老师信息")
     @PutMapping("/updateTeacher")
     public String updateTeacher(@RequestBody TeacherDTO teacher){ return teacherServiceImpl.updateTeacher(teacher); }
@@ -89,11 +97,15 @@ public class AdministerController {
 
     @ApiOperation(value = "获取所有课程列表")
     @GetMapping("/getCourse")
-    public List<Course> getCourse(){ return courseServiceImpl.getCourse(); }
+    public List<CourseDTO> getCourse(){ return courseServiceImpl.getCourse(); }
 
     @ApiOperation(value = "获取所有课程列表分页")
     @GetMapping("/getCoursePage")
-    public Page<Course> getCoursePage(Integer pageNum, Integer pageSize, String specialty){ return courseServiceImpl.getCoursePage(pageNum, pageSize, specialty); }
+    public Page<CourseDTO> getCoursePage(Integer pageNum, Integer pageSize, String specialty){ return courseServiceImpl.getCoursePage(pageNum, pageSize, specialty); }
+
+    @ApiOperation(value = "搜索课程（用课程名）")
+    @GetMapping("/searchCoursePage")
+    public Page<CourseDTO> searchCoursePage(Integer pageNum, Integer pageSize, String courseName){ return courseServiceImpl.searchCourse(pageNum, pageSize, courseName); }
 
 
     @ApiOperation(value = "更新课程信息")

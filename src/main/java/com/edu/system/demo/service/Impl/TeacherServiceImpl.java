@@ -58,8 +58,19 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public void searchTeacher() {
+    public List<Teacher> searchTeacher(Integer id, String name) {
+        List<Teacher> teacherList;
+        if(id == null && name==null){
+            teacherList = teacherRepository.findAll();
+        }else if(id == null && name!=null){
+            teacherList = teacherRepository.searchbyName(name);
+        }else if(id != null && name==null){
+            teacherList = teacherRepository.searchbyId(id);
+        }else{
 
+            teacherList = teacherRepository.searchbyIdandName(id, name);
+        }
+        return teacherList;
     }
 
     @Override

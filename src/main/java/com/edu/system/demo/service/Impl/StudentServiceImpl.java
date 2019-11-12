@@ -60,8 +60,19 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void searchStudent() {
+    public List<Student> searchStudent(Integer id, String name) {
+        List<Student> studentList;
+        if(id == null && name==null){
+            studentList = studentRepository.findAll();
+        }else if(id == null && name!=null){
+            studentList = studentRepository.searchbyName(name);
+        }else if(id != null && name==null){
+            studentList = studentRepository.searchbyId(id);
+        }else{
 
+            studentList = studentRepository.searchbyIdandName(id, name);
+        }
+        return studentList;
     }
 
     @Override

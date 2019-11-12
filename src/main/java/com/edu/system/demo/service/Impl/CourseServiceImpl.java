@@ -53,9 +53,56 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public List<Course> getCourse() {
+    public List<CourseDTO> getCourse() {
         List<Course> courseList = courseRepository.findAll();
-        return courseList;
+        List<CourseDTO> courseDTOList = new ArrayList<>();
+        return translatecourse(courseList,courseDTOList);
+    }
+
+    private List<CourseDTO> translatecourse(List<Course> courseList, List<CourseDTO> courseDTOList) {
+        for(Course course: courseList){
+            CourseDTO cdto=new CourseDTO();
+            cdto.setId(course.getId());
+            cdto.setName(course.getName());
+            cdto.setTeacher_id(course.getTeacher_id());
+            cdto.setStu_num(course.getStu_num());
+            cdto.setType(course.getType());
+            cdto.setSpecialty(course.getSpecialty());
+            cdto.setInstitute(course.getInstitute());
+            cdto.setClass_id(course.getClass_id());
+            cdto.setCredit(course.getCredit());
+            cdto.setMax_num(course.getMax_num());
+            Classroom c = classroomRepository.getOne(new Integer(course.getClass_id()));
+            String class_time = null;
+            String courseid = String.valueOf(course.getId());
+            if(course.getCredit()==3){
+                if(c.getLesson3()!=null && c.getLesson3().equals(courseid)){
+                    class_time = c.getWeekday()+"第3-5节";
+                }else if(c.getLesson8()!=null && c.getLesson8().equals(courseid)){
+                    class_time = c.getWeekday()+"第8-10节";
+                }else if(c.getLesson12()!=null && c.getLesson12().equals(courseid)){
+                    class_time = c.getWeekday()+"第12-14节";
+                }
+            }else{
+                if(c.getLesson1()!=null && c.getLesson1().equals(courseid)){
+                    class_time = c.getWeekday()+"第1-2节";
+                }else if(c.getLesson3()!=null && c.getLesson3().equals(courseid)){
+                    class_time = c.getWeekday()+"第3-4节";
+                }else if(c.getLesson6()!=null && c.getLesson6().equals(courseid)){
+                    class_time = c.getWeekday()+"第6-7节";
+                }else if(c.getLesson8()!=null && c.getLesson8().equals(courseid)){
+                    class_time = c.getWeekday()+"第8-9节";
+                }else if(c.getLesson10()!=null && c.getLesson10().equals(courseid)){
+                    class_time = c.getWeekday()+"第10-11节";
+                }else if(c.getLesson12()!=null && c.getLesson12().equals(courseid)){
+                    class_time = c.getWeekday()+"第12-13节";
+                }
+            }
+            cdto.setClass_time(class_time);
+            cdto.setClassroom(c.getClassroom());
+            courseDTOList.add(cdto);
+        }
+        return courseDTOList;
     }
 
     @Override
@@ -84,8 +131,18 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void searchCourse() {
-
+    public Page<CourseDTO> searchCourse(Integer pageNum, Integer pageSize, String course_name) {
+        List<Course> courseList = courseRepository.findByCourseName(course_name);
+        List<CourseDTO> courseDTOList = new ArrayList<>();
+        courseDTOList =  translatecourse(courseList,courseDTOList);
+        Pageable pageable = PageRequest.of(pageNum, pageSize);
+        int totalElements =courseDTOList.size();
+        int fromIndex = pageable.getPageSize()*pageable.getPageNumber();
+        int toIndex = pageable.getPageSize()*(pageable.getPageNumber()+1);
+        if(toIndex>totalElements) toIndex = totalElements;
+        List<CourseDTO> indexObjects = courseDTOList.subList(fromIndex,toIndex);
+        Page<CourseDTO> coursePage=new PageImpl<>(indexObjects, pageable ,totalElements);
+        return coursePage;
     }
 
     @Override
@@ -95,21 +152,23 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public Page<Course> getCoursePage(Integer pageNum, Integer pageSize, String specialty) {
-        List<Course> courseList;
+    public Page<CourseDTO> getCoursePage(Integer pageNum, Integer pageSize, String specialty) {
+        List<CourseDTO> courseDTOList=new ArrayList<>();
         if(specialty == null){
-            courseList = courseRepository.findAll();
+            List<Course> courseList = courseRepository.findAll();
+            courseDTOList = translatecourse(courseList,courseDTOList);
         }else{
-            courseList =courseRepository.sortCoursebySpecialty(specialty);
+            List<Course> courseList =courseRepository.sortCoursebySpecialty(specialty);
+            courseDTOList = translatecourse(courseList,courseDTOList);
         }
 
         Pageable pageable = PageRequest.of(pageNum, pageSize);
-        int totalElements =courseList.size();
+        int totalElements =courseDTOList.size();
         int fromIndex = pageable.getPageSize()*pageable.getPageNumber();
         int toIndex = pageable.getPageSize()*(pageable.getPageNumber()+1);
         if(toIndex>totalElements) toIndex = totalElements;
-        List<Course> indexObjects = courseList.subList(fromIndex,toIndex);
-        Page<Course> coursePage=new PageImpl<>(indexObjects, pageable ,totalElements);
+        List<CourseDTO> indexObjects = courseDTOList.subList(fromIndex,toIndex);
+        Page<CourseDTO> coursePage=new PageImpl<>(indexObjects, pageable ,totalElements);
         return coursePage;
     }
 
