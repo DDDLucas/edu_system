@@ -94,5 +94,12 @@ public class ClassroomServiceImpl implements ClassroomService {
         return "清空教室成功";
     }
 
+    @Override
+    public Classroom getClassroomSingle() {
+        Classroom c =  classroomRepository.getOnebyId(109).get(0);
+//        Classroom c =  classroomRepository.getOne(109);
+        return c;
+    }
+
 
 }

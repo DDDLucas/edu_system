@@ -22,4 +22,6 @@ public interface ClassroomService {
     Page<Classroom> getClassroomPage(Integer pageNum, Integer pageSize);
 
     String emptyClassroom();
+
+    Classroom getClassroomSingle();
 }

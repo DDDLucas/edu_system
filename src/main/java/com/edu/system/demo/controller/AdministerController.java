@@ -131,6 +131,10 @@ public class AdministerController {
     @GetMapping("/getClassroom")
     public List<Classroom> getClassroom(){ return classroomServiceImpl.getClassroom(); }
 
+    @ApiOperation(value = "获取单个教室")
+    @GetMapping("/getClassroomSingle")
+    public Classroom getClassroomSingle(){ return classroomServiceImpl.getClassroomSingle(); }
+
     @ApiOperation(value = "获取所有教室列表分页")
     @GetMapping("/getClassroomPage")
     public Page<Classroom> getClassroomPage(Integer pageNum, Integer pageSize){ return classroomServiceImpl.getClassroomPage(pageNum, pageSize); }
